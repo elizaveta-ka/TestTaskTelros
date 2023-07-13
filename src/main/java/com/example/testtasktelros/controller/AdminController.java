@@ -1,7 +1,7 @@
 package com.example.testtasktelros.controller;
 
 import com.example.testtasktelros.model.User;
-import com.example.testtasktelros.service.UserService;
+import com.example.testtasktelros.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,34 +10,34 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
-public class UserController {
+public class AdminController {
 
-    private UserService userService;
+    private AdminService adminService;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
     }
 
     @GetMapping("/users")
     public List<User> getAllUsers(){
-        return userService.getAllUsers();
+        return adminService.getAllUsers();
     }
 
     @PostMapping("/add-user")
     public ResponseEntity<String> addNewUser(@RequestBody User user){
-        String message = userService.addUser(user);
+        String message = adminService.addUser(user);
         return ResponseEntity.ok(message);
     }
 
     @PutMapping("/update-user/{id}")
     public  User updateUser(@PathVariable("id") long id,@RequestBody User user) {
-        return userService.updateUser(id, user);
+        return adminService.updateUser(id, user);
     }
 
     @DeleteMapping("/delete-user/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") long id){
-        String message = userService.deleteUser(id);
+        String message = adminService.deleteUser(id);
         return ResponseEntity.ok(message);
     }
 
