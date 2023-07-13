@@ -29,6 +29,15 @@ public class AdminService {
         this.roleRepository = roleRepository;
     }
 
+    public AdminService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    public AdminService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     /**
      * Admin can get all users
      * @return List<User>

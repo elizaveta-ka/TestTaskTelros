@@ -2,10 +2,7 @@ package com.example.testtasktelros.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -14,6 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "users")
 public class User {
 
@@ -56,4 +54,16 @@ public class User {
     )
     private Set<Role> roles;
 
+    public User(String surname, String username, String fullName, String patronymic, String birthday, String email, String numberPhone, String image, String password, Set<Role> roles) {
+        this.surname = surname;
+        this.username = username;
+        this.fullName = fullName;
+        this.patronymic = patronymic;
+        this.birthday = birthday;
+        this.email = email;
+        this.numberPhone = numberPhone;
+        this.image = image;
+        this.password = password;
+        this.roles = roles;
+    }
 }

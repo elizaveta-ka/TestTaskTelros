@@ -23,6 +23,8 @@ public class UserService {
         this.roleRepository = roleRepository;
     }
 
+
+
     /**
      * The user can view his personal page
      * The user cannot view other users
