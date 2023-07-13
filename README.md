@@ -7,6 +7,10 @@ path: TestTaskTelros/Test Task Telros.postman_collection.json
 
 The file contains a collection for Postman
 
+# Auth
+After user authorization Bearer JWT token is returned.
+To check the access of roles, you need to copy the token and use it in other Postman requests.
+
 # PostgreSQL
 
 Connect to local database : application.properties
