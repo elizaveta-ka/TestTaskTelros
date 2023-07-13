@@ -7,7 +7,7 @@ path: TestTaskTelros/Test Task Telros.postman_collection.json
 
 The file contains a collection for Postman
 
-# PostgresSQL
+# PostgreSQL
 
 Connect to local database : application.properties
 
