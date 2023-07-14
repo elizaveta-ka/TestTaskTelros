@@ -1,5 +1,7 @@
 # Test task Java Backend developer
 
+Java 17, Spring(Boot, Data, Security) PostgreSQL, Maven
+
 # Postman
 
 For the convenience of testing the application 
