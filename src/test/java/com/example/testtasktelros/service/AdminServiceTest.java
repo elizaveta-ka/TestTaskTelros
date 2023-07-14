@@ -4,6 +4,7 @@ import com.example.testtasktelros.model.Role;
 import com.example.testtasktelros.model.User;
 import com.example.testtasktelros.repository.RoleRepository;
 import com.example.testtasktelros.repository.UserRepository;
+import com.example.testtasktelros.service.impl.AdminServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +31,7 @@ public class AdminServiceTest {
         UserRepository userRepository = Mockito.mock(UserRepository.class);
         Mockito.when(userRepository.findAll()).thenReturn(users);
 
-        AdminService adminService = new AdminService(userRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository);
 
         List<User> result = adminService.getAllUsers();
 
@@ -55,7 +56,7 @@ public class AdminServiceTest {
         Mockito.when(userRepository.save(existingUser)).thenReturn(existingUser);
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        AdminService userService = new AdminService(userRepository, passwordEncoder);
+        AdminServiceImpl userService = new AdminServiceImpl(userRepository, passwordEncoder);
 
         // updateUser()
         User result = userService.updateUser(1, updatedUser);
@@ -75,7 +76,7 @@ public class AdminServiceTest {
         UserRepository userRepository = Mockito.mock(UserRepository.class);
         Mockito.when(userRepository.findById(1L)).thenReturn(Optional.of(user));
 
-        AdminService adminService = new AdminService(userRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository);
 
         // deleteUser()
         String result = adminService.deleteUser(1L);
@@ -94,7 +95,7 @@ public class AdminServiceTest {
         UserRepository userRepository = Mockito.mock(UserRepository.class);
         Mockito.when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
-        AdminService adminService = new AdminService(userRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository);
 
         // deleteUser()
         String result = adminService.deleteUser(1L);
@@ -125,7 +126,7 @@ public class AdminServiceTest {
         Mockito.when(roleRepository.findByName("ROLE_USER")).thenReturn(Optional.of(userRole));
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        AdminService adminService = new AdminService(userRepository, passwordEncoder, roleRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository, passwordEncoder, roleRepository);
 
         // addUser()
         String result = adminService.addUser(user);
@@ -148,7 +149,7 @@ public class AdminServiceTest {
         Mockito.when(userRepository.existsByUsername(user.getUsername())).thenReturn(true);
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        AdminService adminService = new AdminService(userRepository, passwordEncoder, roleRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository, passwordEncoder, roleRepository);
 
         // Call to addUser() method, expected to throw an APIException
         adminService.addUser(user);
@@ -165,7 +166,7 @@ public class AdminServiceTest {
         Mockito.when(userRepository.existsByEmail(user.getEmail())).thenReturn(true);
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        AdminService adminService = new AdminService(userRepository, passwordEncoder, roleRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository, passwordEncoder, roleRepository);
 
         // Call to addUser() method, expected to throw an APIException
         adminService.addUser(user);
